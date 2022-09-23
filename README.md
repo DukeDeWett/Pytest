@@ -1,5 +1,5 @@
 # Pytest
-Here I am planning to upload all my pytest tests for a lot of different websited
+Here I am planning to upload all my pytest tests for a lot of different websites.
 Each website is made for sole purpose of being tested automatically. 
 
 ### Install
