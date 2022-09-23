@@ -8,7 +8,7 @@ Each website is made for sole purpose of being tested automatically.
 
 ### Run tests(CMD and terminal)
 
-pytest (for all tests)
+pytest (for all tests)\
 pytest test_******(specific test name in case you want to specific thing)
 
 ### Description
