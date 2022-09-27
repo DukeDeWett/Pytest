@@ -3,14 +3,22 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 import time
-import pytest
 
 driver = webdriver.Chrome(service=Service(r"C:\Program Files (x86)/chromedriver.exe"))
+p = 0.7
+# That variable is created for time.sleep() functions, so I don't have to repeat myself that much on the
+# following code. It's made for short waits, so user can see what is happening.
+i = 5
+# That variable is created for implicitly.wait() function, so I don't have to repeat myself that much on the
+# following code. It's made to be sure that the following code works as it should do.
+s = 2
+# That variable is created for time.sleep() functions, so I don't have to repeat myself that much on the
+# following code. It's made for longer waits in cases when shorter waits(p) might not be enough.
 
 
 def test_setup():
     driver.get("https://ultimateqa.com/simple-html-elements-for-automation/")
-    driver.implicitly_wait(10)
+    driver.implicitly_wait(i)
     driver.maximize_window()
 
 
@@ -24,12 +32,12 @@ def go_back():
 # For each button or link I had to use specific selector that is why it is very diverse, even when it does not need to
 # be.
 def test_easy():
-    driver.implicitly_wait(4)
+    driver.implicitly_wait(i)
     driver.find_element(By.ID, "button1").click()
     go_back()
     driver.find_element(By.ID, "button2").click()
     go_back()
-    time.sleep(1)
+    time.sleep(p)
     driver.find_element(By.ID, "idExample").click()
     go_back()
     driver.find_element(By.LINK_TEXT, "Click me using this link text!").click()
@@ -38,7 +46,7 @@ def test_easy():
     go_back()
     driver.find_element(By.NAME, "button1").click()
     go_back()
-    time.sleep(1)
+    time.sleep(p)
     print("Phase one - passed")
 
 
@@ -63,9 +71,9 @@ def test_mid():
     go_back()
     driver.find_element(By.ID, "et_pb_contact_name_0").send_keys("Hello")
     driver.find_element(By.ID, "et_pb_contact_email_0").send_keys("bb@cya.bye")
-    time.sleep(1)
+    time.sleep(p)
     driver.find_element(By.NAME, "et_builder_submit_button").click()
-    time.sleep(3)
+    time.sleep(s)
     medium = driver.find_element(
         By.XPATH, "/html/body/div[1]/div/div/div/article/div/div[1]"
                   "/div/div[3]/div/div[1]/div[7]/div/div/div/form/input[3]")
@@ -92,11 +100,11 @@ def test_mid():
     print("Is tab 1 selected?")
     print(medium.is_selected())
     print("Phase two - passed")
-    time.sleep(0.9)
+    time.sleep(p)
 
 
-# That is the last part. I was supposed to find elements via XPATH and then I had to highlight the "HIGHLIGHT ME" texts,
-# and I thought that instead of click and drag it I want them to be highlighted separatedly.
+# That is the last part. I was supposed to find elements via XPATH, and then I had to highlight the "HIGHLIGHT ME"
+# texts, and I thought that instead of click and drag it I want them to be highlighted separately.
 def test_down():
     driver.find_element(
         By.XPATH, "/html/body/div[1]/div/div/div/article/div/div[1]"
@@ -118,17 +126,17 @@ def test_down():
         By.XPATH, "/html/body/div[1]/div/div/div/article/div/div[1]/div/div[5]/div/div[1]/div/div/div/h4/span")
     action = ActionChains(driver)
     action.double_click(medium).click().perform()
-    time.sleep(1)
+    time.sleep(p)
     medium = driver.find_element(
         By.XPATH, "/html/body/div[1]/div/div/div/article/div/div[1]/div/div[5]/div/div[2]/div/div/div/h4/span")
     action = ActionChains(driver)
     action.double_click(medium).click().perform()
-    time.sleep(1)
+    time.sleep(p)
     medium = driver.find_element(
         By.XPATH, "/html/body/div[1]/div/div/div/article/div/div[1]/div/div[5]/div/div[3]/div/div/div/h4/span")
     action = ActionChains(driver)
     action.double_click(medium).click().perform()
-    time.sleep(2)
+    time.sleep(s)
     print("Phase three - passed")
 
 
@@ -136,17 +144,17 @@ def test_down():
 # in case it might start to work properly again.
 def test_login():
     driver.find_element(By.LINK_TEXT, "Go to login page").click()
-    driver.implicitly_wait(5)
+    driver.implicitly_wait(i)
     driver.find_element(By.ID, "user[email]").send_keys("booboo@gj.bro")
     driver.find_element(By.ID, "user[password]").send_keys("booboo@gj.bro")
     driver.find_element(By.ID, "user[remember_me]").click()
     driver.find_element(By.XPATH, "/html/body/main/div/div/article/form/div[4]/input").click()
-    time.sleep(2)
+    time.sleep(s)
     driver.find_element(By.LINK_TEXT, "Forgot Password?").click()
-    driver.implicitly_wait(3)
+    driver.implicitly_wait(i)
     driver.find_element(By.ID, "user[email]").send_keys("booboo@gj.bro")
     driver.find_element(By.NAME, "commit").click()
-    time.sleep(2)
+    time.sleep(s)
     print("Last phase - passed")
 
 
