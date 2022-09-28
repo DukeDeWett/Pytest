@@ -3,7 +3,8 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import time
-import pytest
+import os
+
 
 driver = webdriver.Chrome(service=Service(r"C:\Program Files (x86)/chromedriver.exe"))
 p = 0.7
@@ -18,6 +19,9 @@ def test_setup():
     driver.get("http://a.testaddressbook.com/")
     driver.implicitly_wait(i)
     driver.maximize_window()
+    assert not isinstance(driver, type(webdriver))
+    print(driver.title)
+    assert driver.title == 'Address Book'
 
 
 def test_login():
@@ -29,6 +33,7 @@ def test_login():
     log.send_keys("ddjcdjcd")
     log.send_keys(Keys.ENTER)
     driver.implicitly_wait(i)
+    assert driver.title == 'Address Book'
 
 
 def test_addresses():
@@ -63,6 +68,9 @@ def test_addresses():
     time.sleep(p)
     driver.find_element(By.ID, "address_website").send_keys("http://www.notsohasty.com")
     time.sleep(p)
+    driver.implicitly_wait(i)
+    driver.find_element(By.ID, "address_picture").send_keys(os.getcwd() + "/sampleFile.jpeg")
+    time.sleep(p)
     driver.find_element(By.ID, "address_phone").send_keys("555333111")
     time.sleep(p)
     driver.find_element(By.XPATH, "/html/body/div/div/div/form/div[15]/input[2]").click()
@@ -71,10 +79,12 @@ def test_addresses():
     time.sleep(p)
     driver.find_element(By.ID, "address_color").send_keys('#FF0000')
     time.sleep(p)
-    driver.find_element(By.XPATH, "/html/body/div/div/div/form/div[17]/input").click()
-    time.sleep(3)
-    print("All tests completed!")
+    assert driver.title == 'Address Book'
 
 
 def test_tear_down():
+    driver.find_element(By.XPATH, "/html/body/div/div/div/form/div[17]/input").click()
+    time.sleep(3)
+    driver.implicitly_wait(i)
+    print("All tests completed!")
     driver.quit()
