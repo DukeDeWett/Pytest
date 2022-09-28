@@ -31,6 +31,7 @@ def test_setup():
     driver.get("https://demoqa.com/elements")
     driver.implicitly_wait(10)
     driver.maximize_window()
+    assert driver.title == 'ToolsQA'
 
 
 def test_text_box():
@@ -51,6 +52,7 @@ def test_text_box():
     action.click_and_hold(ele).perform()  # Clicking didn't work here, so I had to use this forceful approach.
     ele.send_keys(Keys.ENTER)
     time.sleep(2)
+    assert driver.title == 'ToolsQA'
 
 
 def test_check_box():
@@ -59,6 +61,7 @@ def test_check_box():
     time.sleep(p)
     driver.find_element(By.CSS_SELECTOR, "#tree-node > ol > li > span > label > span.rct-checkbox > svg").click()
     time.sleep(p)
+    assert driver.title == 'ToolsQA'
 
 
 def test_radio_button():
@@ -72,6 +75,7 @@ def test_radio_button():
     finally:
         pass
     time.sleep(p)
+    assert driver.title == 'ToolsQA'
 
 
 # On this table I added new user, edited the existed one, used search bar to find specific user, and I deleted him.
@@ -110,6 +114,7 @@ def test_web_tables():
     driver.find_element(By.CSS_SELECTOR, "#delete-record-1 > svg > path").click()
     print("Cierra Vega removed!")
     time.sleep(p)
+    assert driver.title == 'ToolsQA'
 
 
 # This tests is made to click each button in a specific way.
@@ -124,6 +129,7 @@ def test_buttons():
     ele = driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div[2]/div[2]/div[2]/div[3]/button")
     driver.execute_script("arguments[0].click();", ele)  # Normal clicking didn't work, so I had to do it the hard way.
     time.sleep(2)
+    assert driver.title == 'ToolsQA'
 
 
 def test_links():
@@ -151,6 +157,7 @@ def test_links():
     driver.execute_script("arguments[0].click();", ele)
     time.sleep(s)
     print("Link has responded with status 403 and status text Forbidden")
+    assert driver.title == 'ToolsQA'
 
 
 def test_broken_link():
@@ -170,6 +177,7 @@ def test_broken_link():
     driver.back()
     driver.back()
     time.sleep(p)
+    assert driver.title == 'ToolsQA'
 
 
 def test_upload_and_download():
@@ -180,6 +188,7 @@ def test_upload_and_download():
     driver.implicitly_wait(i)
     driver.find_element(By.ID, "uploadFile").send_keys(os.getcwd() + "/sampleFile.jpeg")
     time.sleep(s)
+    assert driver.title == 'ToolsQA'
 
 
 def test_dynamic_properties():
@@ -198,6 +207,7 @@ def test_dynamic_properties():
         pass
     print("Visible after 5 seconds button clicked.")
     print("Elements part finished.")
+    assert driver.title == 'ToolsQA'
 
 
 # Unfortunately it is almost impossible to see bottom part of this, because of big AD, but believe it worked.:)
@@ -253,6 +263,7 @@ def test_practice_form():
     finally:
         pass
     print("Form sent succesfully!")
+    assert driver.title == 'ToolsQA'
 
 
 def test_browser_window():
@@ -289,6 +300,7 @@ def test_browser_window():
     time.sleep(s)
     driver.switch_to.window(driver.window_handles[0])
     time.sleep(p)
+    assert driver.title == 'ToolsQA'
 
 
 def test_alerts():
@@ -314,6 +326,7 @@ def test_alerts():
     Alert(driver).send_keys("easy")
     Alert(driver).accept()
     time.sleep(p)
+    assert driver.title == 'ToolsQA'
 
 
 def test_frames():
@@ -327,6 +340,7 @@ def test_frames():
     driver.switch_to.default_content()
     print("You successfully switched between iframe and parent frame!")
     time.sleep(p)
+    assert driver.title == 'ToolsQA'
 
 
 def test_modal_dialogs():
@@ -345,6 +359,7 @@ def test_modal_dialogs():
     WebDriverWait(driver, 20).until(ec.element_to_be_clickable(
         (By.CSS_SELECTOR, "#closeLargeModal"))).click()
     time.sleep(p)
+    assert driver.title == 'ToolsQA'
 
 
 def test_accordians():
@@ -359,6 +374,7 @@ def test_accordians():
     ele = driver.find_element(By.CSS_SELECTOR, "#section3Heading")
     driver.execute_script("arguments[0].click();", ele)  # Normal clicking didn't work, so I had to do it the hard way.
     time.sleep(s)
+    assert driver.title == 'ToolsQA'
 
 
 def test_auto_complete():
@@ -379,6 +395,7 @@ def test_auto_complete():
     ele.send_keys("Red")
     ele.send_keys(Keys.ENTER)
     time.sleep(p)
+    assert driver.title == 'ToolsQA'
 
 
 def test_date_picker():
@@ -399,6 +416,7 @@ def test_date_picker():
     ele.send_keys("October 9, 2005 3:33")
     ele.send_keys(Keys.ENTER)
     time.sleep(p)
+    assert driver.title == 'ToolsQA'
 
 
 def test_sliders():
@@ -413,6 +431,7 @@ def test_sliders():
     move.click_and_hold(ele).move_by_offset(10, 0).release().perform()
     time.sleep(p)
     move.click_and_hold(ele).move_by_offset(150, 0).release().perform()
+    assert driver.title == 'ToolsQA'
 
 
 def test_progress_bar():
@@ -431,6 +450,7 @@ def test_progress_bar():
     time.sleep(p)
     ele.click()
     time.sleep(p)
+    assert driver.title == 'ToolsQA'
 
 
 def test_tabs():
@@ -448,6 +468,7 @@ def test_tabs():
         ele.click()
     else:
         print("Last tab is disabled like intended.")
+    assert driver.title == 'ToolsQA'
 
 
 def test_tool_tips():
@@ -466,6 +487,7 @@ def test_tool_tips():
     ele = driver.find_element(By.XPATH, "//*[@id='texToolTopContainer']/a[2]")
     ActionChains(driver).move_to_element(ele).perform()
     time.sleep(p)
+    assert driver.title == 'ToolsQA'
 
 
 def test_menu():
@@ -489,6 +511,7 @@ def test_menu():
     ele = driver.find_element(By.XPATH, "//*[@id='nav']/li[2]/ul/li[3]/ul/li[2]/a")
     ActionChains(driver).move_to_element(ele).perform()
     time.sleep(p)
+    assert driver.title == 'ToolsQA'
 
 
 def test_select_menu():
@@ -521,6 +544,7 @@ def test_select_menu():
     Select(driver.find_element(By.CSS_SELECTOR, "#cars")).select_by_visible_text("Saab")
     Select(driver.find_element(By.CSS_SELECTOR, "#cars")).select_by_visible_text("Volvo")
     time.sleep(p)
+    assert driver.title == 'ToolsQA'
 
 
 def test_sortable():
@@ -553,6 +577,7 @@ def test_sortable():
     move = ActionChains(driver)
     move.click_and_hold(ele).move_by_offset(-100, -50).release().perform()
     time.sleep(p)
+    assert driver.title == 'ToolsQA'
 
 
 def test_selectable():
@@ -588,6 +613,7 @@ def test_selectable():
     time.sleep(p)
     driver.find_element(By.CSS_SELECTOR, "#row3 > li:nth-child(3)").click()
     time.sleep(p)
+    assert driver.title == 'ToolsQA'
 
 
 def test_resizable():
@@ -600,6 +626,7 @@ def test_resizable():
     move = ActionChains(driver)
     move.click_and_hold(ele).move_by_offset(100, 100).release().click().perform()
     time.sleep(p)
+    assert driver.title == 'ToolsQA'
 
 
 def test_droppable():
@@ -644,6 +671,7 @@ def test_droppable():
     move = ActionChains(driver)
     move.click_and_hold(ele).move_by_offset(300, 0).release().perform()
     time.sleep(p)
+    assert driver.title == 'ToolsQA'
 
 
 def test_draggable():
@@ -700,9 +728,10 @@ def test_draggable():
     move = ActionChains(driver)
     move.click_and_hold(ele).move_by_offset(-30, 200).release().perform()
     time.sleep(p)
+    assert driver.title == 'ToolsQA'
 
 
 def test_teardown():
     driver.close()
     driver.quit()
-    print("Test completed")
+    print("Tests completed")
