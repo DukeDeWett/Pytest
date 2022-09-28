@@ -20,6 +20,7 @@ def test_setup():
     driver.get("https://ultimateqa.com/simple-html-elements-for-automation/")
     driver.implicitly_wait(i)
     driver.maximize_window()
+    assert driver.title == 'Simple HTML Elements For Automation - Ultimate QA'
 
 
 # This test is about entering into a lot of links, so I made my life simpler, by making a function that waits for user
@@ -48,6 +49,7 @@ def test_easy():
     go_back()
     time.sleep(p)
     print("Phase one - passed")
+    assert driver.title == 'Simple HTML Elements For Automation - Ultimate QA'
 
 
 # This one is more interesting. Except clicking into different links or buttons it's also sends some form and validates
@@ -101,6 +103,7 @@ def test_mid():
     print(medium.is_selected())
     print("Phase two - passed")
     time.sleep(p)
+    assert driver.title == 'Simple HTML Elements For Automation - Ultimate QA'
 
 
 # That is the last part. I was supposed to find elements via XPATH, and then I had to highlight the "HIGHLIGHT ME"
@@ -138,6 +141,7 @@ def test_down():
     action.double_click(medium).click().perform()
     time.sleep(s)
     print("Phase three - passed")
+    assert driver.title == 'Simple HTML Elements For Automation - Ultimate QA'
 
 
 # This one worked properly, but without logical reason the login screen started to send CAPTCHA, so I keep it censored
@@ -156,7 +160,9 @@ def test_login():
     driver.find_element(By.NAME, "commit").click()
     time.sleep(s)
     print("Last phase - passed")
+    assert driver.title == 'Ultimate QA'
 
 
 def test_tear_down():
+    print("Tests completed!")
     driver.quit()
