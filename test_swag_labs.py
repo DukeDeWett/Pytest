@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import time
 
+
 driver = webdriver.Chrome(service=Service(r"C:\Program Files (x86)/chromedriver.exe"))
 p = 0.7
 # That variable is created for time.sleep() functions, so I don't have to repeat myself that much on the
@@ -20,6 +21,7 @@ def test_setup():
     driver.get("https://www.saucedemo.com/")
     driver.implicitly_wait(i)
     driver.maximize_window()
+    assert driver.title == 'Swag Labs'
 
 
 # Firstable I have sent keys for profile that is destined to fail, so then I could try to log into standard account
@@ -35,6 +37,7 @@ def test_login():
     log.send_keys(Keys.BACKSPACE)
     log.send_keys("standard_user")
     driver.find_element(By.ID, "login-button").click()
+    assert driver.title == 'Swag Labs'
 
 
 # Here I wanted to check how works the buying process and also what happens if you decide remove one of those items from
@@ -50,6 +53,7 @@ def test_purchase():
     time.sleep(s)
     driver.find_element(By.CSS_SELECTOR, "#shopping_cart_container > a").click()
     time.sleep(p)
+    assert driver.title == 'Swag Labs'
 
 
 # This is a simple checkout procedure without any turbulences.
@@ -63,12 +67,14 @@ def test_checkout():
     time.sleep(s)
     driver.find_element(By.ID, "continue").click()
     time.sleep(s)
+    assert driver.title == 'Swag Labs'
 
 
 def test_closure():
     driver.implicitly_wait(i)
     driver.find_element(By.ID, "finish").click()
     time.sleep(s)
+    assert driver.title == 'Swag Labs'
 
 
 def test_teardown():
