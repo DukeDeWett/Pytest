@@ -119,22 +119,22 @@ class TestUQ:
         action.double_click(medium).click().perform()
         logging.info("Phase three - passed")
 
-    # def test_login(self):
-    #     driver.find_element(By.LINK_TEXT, HomePage.link2).click()
-    #     wait()
-    #     driver.find_element(By.ID, HomePage.key3).send_keys("booboo@gj.bro")
-    #     wait()
-    #     driver.find_element(By.ID, HomePage.key4).send_keys("booboo@gj.bro")
-    #     wait()
-    #     driver.find_element(By.ID, HomePage.button7).click()
-    #     wait()
-    #     driver.find_element(By.XPATH, HomePage.button8).click()
-    #     wait()
-    #     driver.find_element(By.LINK_TEXT, HomePage.link3).click()
-    #     wait()
-    #     driver.find_element(By.NAME, HomePage.button9).click()
-    #     wait()
-    #     logging.info("Last phase - passed")
+    def test_login(self):
+        driver.find_element(By.LINK_TEXT, HomePage.link2).click()
+        wait()
+        driver.find_element(By.ID, HomePage.key3).send_keys("booboo@gj.bro")
+        wait()
+        driver.find_element(By.ID, HomePage.key4).send_keys("booboo@gj.bro")
+        wait()
+        driver.find_element(By.ID, HomePage.button7).click()
+        wait()
+        driver.find_element(By.XPATH, HomePage.button8).click()
+        wait()
+        driver.find_element(By.LINK_TEXT, HomePage.link3).click()
+        wait()
+        driver.find_element(By.NAME, HomePage.button9).click()
+        wait()
+        logging.info("Last phase - passed")
 
     @pytest.fixture
     def close_msg(self):
