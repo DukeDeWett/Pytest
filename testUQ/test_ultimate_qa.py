@@ -25,67 +25,67 @@ def wait(driver):
     driver.implicitly_wait(5)
 
 
-# For each button or link I had to use specific selector that is why it is very diverse, even when it does not need
-# to be.
 def test_easy(driver):
+    """For each button or link I had to use specific selector that is why it is very diverse, even when it does not need
+    to be."""
     driver.get("https://ultimateqa.com/simple-html-elements-for-automation/")
     wait(driver)
-    driver.find_element(*Header.BUTTON1).click()
+    driver.find_element(*Header.BUTTON_CLICK_ME).click()
     go_back(driver)
-    driver.find_element(*Header.BUTTON2).click()
+    driver.find_element(*Header.BUTTON_RAISE).click()
     go_back(driver)
     wait(driver)
-    driver.find_element(*Header.BUTTON3).click()
+    driver.find_element(*Header.BUTTON_GREEN_ID).click()
     go_back(driver)
-    driver.find_element(*Header.LINK1).click()
+    driver.find_element(*Header.LINK_ON_BLUE).click()
     go_back(driver)
-    driver.find_element(*Header.BUTTON4).click()
+    driver.find_element(*Header.BUTTON_CLASS_NAME_ON_BLUE).click()
     go_back(driver)
-    driver.find_element(*Header.BUTTON5).click()
+    driver.find_element(*Header.BUTTON_NAME_ON_BLUE).click()
     go_back(driver)
     wait(driver)
     logging.info("Phase one - passed")
 
 
-# This one is more interesting. Except clicking into different links or buttons it's also sends some
-# form and validates the options that were or were not chosen.
 def test_mid(driver):
-    # this selector is huge, but that was the only way to make it work with selenium
+    """ This one is more interesting. Except clicking into different links or buttons it's also sends some
+    form and validates the options that were or were not chosen."""
     driver.get("https://ultimateqa.com/simple-html-elements-for-automation/")
+    """ This selector is huge, but that was the only way to make it work with selenium """
     wait(driver)
-    driver.find_element(*Body.BUTTON1).click()
+    driver.find_element(*Body.BUTTON_SIMPLE_CONTROLS).click()
     go_back(driver)
-    driver.find_element(*Body.LINK1).click()
+    driver.find_element(*Body.CLICK_THIS_LINK).click()
     go_back(driver)
-    driver.find_element(*Body.ICON1).click()
+    driver.find_element(*Body.ICON_CLICKABLE_TEXT).click()
     go_back(driver)
-    driver.find_element(*Body.ICON2).click()
+    driver.find_element(*Body.ICON_CLICKABLE_ARROW).click()
     go_back(driver)
     driver.find_element(*Body.NAME).send_keys(*Body.KEY1)
     driver.find_element(*Body.MAIL).send_keys(*Body.KEY2)
     wait(driver)
-    driver.find_element(*Body.BUTTON2).click()
+    driver.find_element(*Body.BUTTON_EMAIL_ME).click()
     wait(driver)
-    driver.find_element(*Body.RADIO1).click()
+    driver.find_element(*Body.RADIO_BUTTON).click()
     wait(driver)
     medium = driver.find_element(*Body.CHECKBOX)
     medium.click()
     wait(driver)
     logging.info(r"Is 'other' selected?")
     logging.info(medium.is_selected())
-    medium = driver.find_element(*Body.CHECKBOX2)
+    medium = driver.find_element(*Body.CHECKBOX_BUTTON)
     wait(driver)
     medium.click()
     logging.info("Is bike option selected?")
     logging.info(medium.is_selected())
-    medium = driver.find_element(*Body.DROPDOWN)
-    medium.send_keys(*Body.CAR)
+    medium = driver.find_element(*Body.DROPDOWN_MENU)
+    medium.send_keys(*Body.CAR_OPTION)
     wait(driver)
     logging.info("Is car option selected?")
     logging.info(medium.is_selected())
     logging.info("Is Saab selected?")
     logging.info(medium.is_selected())
-    medium = driver.find_element(*Body.TAB)
+    medium = driver.find_element(*Body.TAB_OPTION)
     wait(driver)
     medium.click()
     logging.info("Is tab 1 selected?")
@@ -94,29 +94,30 @@ def test_mid(driver):
     wait(driver)
 
 
-# That is the last part. I was supposed to find elements via XPATH, and then I had to highlight the "HIGHLIGHT ME"
-# texts, and I thought that instead of click and drag it I want them to be highlighted separately.
 def test_down(driver):
+    """ That is the last part. I was supposed to find elements via XPATH, and then I had to highlight the "HIGHLIGHT ME"
+    texts, and I thought that instead of click and drag it I want them to be highlighted separately."""
     driver.get("https://ultimateqa.com/simple-html-elements-for-automation/")
     wait(driver)
-    driver.find_element(*Footer.BUTTON1).click()
+    driver.find_element(*Footer.BUTTON_TOP_ON_GREY).click()
     go_back(driver)
-    driver.find_element(*Footer.BUTTON2).click()
+    driver.find_element(*Footer.BUTTON_SECOND_ON_GREY).click()
     go_back(driver)
-    driver.find_element(*Footer.BUTTON3).click()
+    driver.find_element(*Footer.BUTTON_THIRD_ON_GREY).click()
     go_back(driver)
-    driver.find_element(*Footer.BUTTON4).click()
+    driver.find_element(*Footer.BUTTON_LAST_ON_GREY).click()
     go_back(driver)
-    medium = driver.find_element(*Footer.HIGHLIGHT1)
+    medium = driver.find_element(*Footer.HIGHLIGHT_ME_LEFT)
     wait(driver)
     action = ActionChains(driver)
     action.double_click(medium).click().perform()
-    medium = driver.find_element(*Footer.HIGHLIGHT2)
+    medium = driver.find_element(*Footer.HIGHLIGHT_ME_MIDDLE)
     wait(driver)
     action = ActionChains(driver)
     action.double_click(medium).click().perform()
-    medium = driver.find_element(*Footer.HIGHLIGHT3)
+    medium = driver.find_element(*Footer.HIGHLIGHT_ME_RIGHT)
     wait(driver)
     action = ActionChains(driver)
     action.double_click(medium).click().perform()
     logging.info("Last phase - passed")
+    
