@@ -2,11 +2,10 @@ from selenium.webdriver.common.by import By
 
 
 class Footer:
-    BUTTON1 = By.XPATH, "//*[@id='button1']"
-    BUTTON2 = By.XPATH, "/html/body/div[1]/div/div/div/article/div/div[1]/div/div[4]/div[1]/div/div[2]/div/div/div" \
-                        "/form/button"
-    BUTTON3 = By.XPATH, "//*[@id='button1' and text()='Xpath Button 1']"
-    BUTTON4 = By.XPATH, "//*[@id='button1' and text()='Xpath Button 2']"
-    HIGHLIGHT1 = By.XPATH, "//*[@id='post-909']/div/div[1]/div/div[5]/div/div[1]/div/div/div/h4/span"
-    HIGHLIGHT2 = By.XPATH, "//*[@id='post-909']/div/div[1]/div/div[5]/div/div[2]/div/div/div/h4/span"
-    HIGHLIGHT3 = By.XPATH, "//*[@id='post-909']/div/div[1]/div/div[5]/div/div[3]/div/div/div/h4/span"
+    BUTTON_TOP_ON_GREY = By.XPATH, "//*[@id='button1']"
+    BUTTON_SECOND_ON_GREY = By.XPATH, "(//button[@id='button1'])[2]"
+    BUTTON_THIRD_ON_GREY = By.XPATH, "//*[@id='button1' and text()='Xpath Button 1']"
+    BUTTON_LAST_ON_GREY = By.XPATH, "//*[@id='button1' and text()='Xpath Button 2']"
+    HIGHLIGHT_ME_LEFT = By.XPATH, "//span[text()='Highlight me']"
+    HIGHLIGHT_ME_MIDDLE = By.XPATH, "(//span[text()='Highlight me'])[2]"
+    HIGHLIGHT_ME_RIGHT = By.XPATH, "(//span[text()='Highlight me'])[3]"
