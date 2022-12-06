@@ -1,5 +1,5 @@
 # Selenium-tests
-Here I am planning to upload all my pytest tests for a lot of different websites.
+Here I am planning to upload all my pytest and selenium tests for a lot of different websites.
 Each website is made for sole purpose of being tested automatically. 
 
 ### Install
