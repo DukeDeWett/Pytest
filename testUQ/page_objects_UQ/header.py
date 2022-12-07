@@ -5,14 +5,14 @@ from enum import Enum
 class BasePageObject(Enum):
     @property
     def by(self):
-        return self.value[1]
+        return self.value[0]
 
     @property
     def locator(self):
-        return self.value[0]
+        return self.value[1]
 
     def find_element(self, driver):
-        return f"{self.locator} {self.by} {driver}"
+        return driver.find_element(self.by, self.locator)
 
 
 class Header(BasePageObject):
