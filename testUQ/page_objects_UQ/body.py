@@ -1,7 +1,8 @@
 from selenium.webdriver.common.by import By
+from page_objects_UQ.base_page_object import BasePageObject
 
 
-class Body:
+class Body(BasePageObject):
     BUTTON_SIMPLE_CONTROLS = By.XPATH, "//a[@href='/button-success'][@class='et_pb_button et_pb_promo_button']"
     CLICK_THIS_LINK = By.ID, "simpleElementsLink"
     ICON_CLICKABLE_TEXT = By.LINK_TEXT, "Clickable Icon"
@@ -14,3 +15,4 @@ class Body:
     CHECKBOX_BUTTON = By.XPATH, "//input[@type='checkbox'][@value='Car']"
     DROPDOWN_MENU = By.XPATH, "//select"
     TAB_OPTION = By.XPATH, "//a[@href='#']"
+    
