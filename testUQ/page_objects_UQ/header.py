@@ -1,5 +1,5 @@
 from selenium.webdriver.common.by import By
-from page_objects_UQ.BasePageObject import BasePageObject
+from page_objects_UQ.base_page_object import BasePageObject
 
 
 class Header(BasePageObject):
