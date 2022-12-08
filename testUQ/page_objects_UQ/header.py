@@ -1,18 +1,5 @@
 from selenium.webdriver.common.by import By
-from enum import Enum
-
-
-class BasePageObject(Enum):
-    @property
-    def by(self):
-        return self.value[0]
-
-    @property
-    def locator(self):
-        return self.value[1]
-
-    def find_element(self, driver):
-        return driver.find_element(self.by, self.locator)
+from page_objects_UQ.BasePageObject import BasePageObject
 
 
 class Header(BasePageObject):
