@@ -2,7 +2,7 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.action_chains import ActionChains
-from page_objects_UQ.header import Header, BasePageObject
+from page_objects_UQ.header import Header
 from page_objects_UQ.body import Body
 from page_objects_UQ.footer import Footer
 import logging
@@ -29,8 +29,7 @@ def test_easy(driver):
     """For each button or link I had to use specific selector that is why it is very diverse, even when it does not need
     to be."""
     driver.get("https://ultimateqa.com/simple-html-elements-for-automation/")
-    click_me = Header.BUTTON_CLICK_ME
-    click_me.find_element(driver).click()
+    Header.BUTTON_CLICK_ME.find_me(driver).click()
     logging.info("Phase one - passed")
 
 
